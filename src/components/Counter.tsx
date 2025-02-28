@@ -388,11 +388,31 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
 
   // Returns button event handlers for continuous actions
   getButtonHandlers = (action: ButtonAction, value: number): React.HTMLAttributes<HTMLButtonElement> => ({
-    onMouseDown: () => this.startContinuousAction(action, value),
-    onMouseUp: this.stopContinuousAction,
-    onMouseLeave: this.stopContinuousAction,
-    onTouchStart: () => this.startContinuousAction(action, value),
-    onTouchEnd: this.stopContinuousAction
+    // Prevent default to avoid text selection and duplicate events on touch devices
+    onMouseDown: (e) => {
+      e.preventDefault();
+      this.startContinuousAction(action, value);
+    },
+    onMouseUp: (e) => {
+      e.preventDefault();
+      this.stopContinuousAction();
+    },
+    onMouseLeave: (e) => {
+      e.preventDefault();
+      this.stopContinuousAction();
+    },
+    onTouchStart: (e) => {
+      e.preventDefault();
+      this.startContinuousAction(action, value);
+    },
+    onTouchEnd: (e) => {
+      e.preventDefault();
+      this.stopContinuousAction();
+    },
+    // Prevent click events that might fire after touch events
+    onClick: (e) => {
+      e.preventDefault();
+    }
   });
 
   render() {

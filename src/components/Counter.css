@@ -49,6 +49,7 @@
   margin: 0 5px;
   padding: 8px 12px;
   font-size: 16px;
+  user-select: none;
 }
 
 .reset-group {
@@ -59,4 +60,5 @@
   margin: 0 5px;
   padding: 6px 10px;
   font-size: 14px;
+  user-select: none;
 }
