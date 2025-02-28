@@ -23,7 +23,7 @@ interface LevelUpCounterState {
   selectedExpTable: '600' | '900' | '1080';
   selectedItemExpOption: 'None' | 'Boost' | 'Reduction';
   // Numeric inputs are stored as strings for editing purposes
-  initialLevel: string;
+  startLevel: string;
   initialRemainingExp: string;
   expBoostRate: string;      // EXP Boost Rate (multiplier)
   depletionRate: string;     // Dream Shards Depletion Rate (multiplier)
@@ -76,23 +76,23 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
     // Default settings
     const defaultExpTable: '600' = '600';
     const defaultLevelData = this.levelData600;
-    const defaultInitialLevel = "1";
+    const defaultStartLevel = "1";
     const defaultInitialRemainingExp = String(defaultLevelData[1].requiredExp);
 
     this.state = {
       count: 0,
       selectedExpTable: defaultExpTable, // '600', '900', or '1080'
       selectedItemExpOption: 'None',      // 'None', 'Boost', or 'Reduction'
-      initialLevel: defaultInitialLevel,
+      startLevel: defaultStartLevel,
       initialRemainingExp: defaultInitialRemainingExp,
       expBoostRate: "1",        // EXP Boost Rate (multiplier)
       depletionRate: "1",       // Dream Shards Depletion Rate (multiplier)
-      targetLevel: String(Number(defaultInitialLevel) + 1)  // Target Level
+      targetLevel: String(Number(defaultStartLevel) + 1)  // Target Level
     };
   }
 
   // Helper: get numeric values from state
-  getNumericInitialLevel = (): number => Number(this.state.initialLevel);
+  getNumericStartLevel = (): number => Number(this.state.startLevel);
   getNumericInitialRemainingExp = (): number => Number(this.state.initialRemainingExp);
   getNumericExpBoostRate = (): number => Number(this.state.expBoostRate);
   getNumericDepletionRate = (): number => Number(this.state.depletionRate);
@@ -130,8 +130,8 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
       : newTable === '900'
       ? this.levelData900
       : this.levelData1080;
-    // When EXP table changes, update initialRemainingExp based on current initialLevel
-    const numericLevel = this.getNumericInitialLevel();
+    // When EXP table changes, update initialRemainingExp based on current startLevel
+    const numericLevel = this.getNumericStartLevel();
     const newInitialRemainingExp = levelData[numericLevel]
       ? String(levelData[numericLevel].requiredExp)
       : "0";
@@ -171,13 +171,13 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
     this.setState({ depletionRate: String(val) });
   };
 
-  // Immediate update: when the user changes the Initial Level,
+  // Immediate update: when the user changes the Start Level,
   // update the Initial Remaining EXP to the required EXP of the new level,
-  // and if the current Target Level is less than or equal to the new Initial Level,
-  // update Target Level to Initial Level + 1.
-  handleInitialLevelChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const newInitialLevelStr = e.target.value;
-    const parsedLevel = Number(newInitialLevelStr);
+  // and if the current Target Level is less than or equal to the new Start Level,
+  // update Target Level to Start Level + 1.
+  handleStartLevelChange = (e: ChangeEvent<HTMLInputElement>): void => {
+    const newStartLevelStr = e.target.value;
+    const parsedLevel = Number(newStartLevelStr);
     const levelData = this.getSelectedLevelData();
     let newInitialRemainingExp = this.state.initialRemainingExp;
     let newTargetLevel = this.state.targetLevel;
@@ -188,7 +188,7 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
       }
     }
     this.setState({
-      initialLevel: newInitialLevelStr,
+      startLevel: newStartLevelStr,
       initialRemainingExp: newInitialRemainingExp,
       targetLevel: newTargetLevel
     });
@@ -202,7 +202,7 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
   // Handler: Initial Remaining EXP blur (final validation)
   handleInitialRemainingExpBlur = (e: FocusEvent<HTMLInputElement>): void => {
     const levelData = this.getSelectedLevelData();
-    const currentLevel = Number(this.state.initialLevel);
+    const currentLevel = Number(this.state.startLevel);
     const maxExp = levelData[currentLevel] ? levelData[currentLevel].requiredExp : 0;
     let val = Number(e.target.value);
     if (isNaN(val) || val < 1) val = 1;
@@ -220,7 +220,7 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
     const levelData = this.getSelectedLevelData();
     const maxLevel = Math.max(...Object.keys(levelData).map(Number));
     let val = Number(e.target.value);
-    const minTarget = Number(this.state.initialLevel) + 1;
+    const minTarget = Number(this.state.startLevel) + 1;
     if (isNaN(val) || val < minTarget) val = minTarget;
     if (val > maxLevel + 1) val = maxLevel + 1;
     this.setState({ targetLevel: String(val) });
@@ -254,7 +254,7 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
   // Simulate level progression using block processing
   computeOutcome = (itemCount: number): { finalLevel: number; remainingExp: number; totalCost: number; processedCount: number } => {
     const levelData = this.getSelectedLevelData();
-    let currentLevel = Number(this.state.initialLevel);
+    let currentLevel = Number(this.state.startLevel);
     let remainingExp = Number(this.state.initialRemainingExp);
     let totalCost = 0;
     let processedCount = 0;
@@ -302,7 +302,7 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
   // Compute maximum allowed item count
   computeMaxCountAllowed = (): number => {
     const levelData = this.getSelectedLevelData();
-    let currentLevel = Number(this.state.initialLevel);
+    let currentLevel = Number(this.state.startLevel);
     let remainingExp = Number(this.state.initialRemainingExp);
     let count = 0;
     const E = this.getItemExp();
@@ -357,7 +357,7 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
       count: 0,
       selectedExpTable: '600',
       selectedItemExpOption: 'None',
-      initialLevel: "1",
+      startLevel: "1",
       initialRemainingExp: String(this.levelData600[1].requiredExp),
       expBoostRate: "1",
       depletionRate: "1",
@@ -402,8 +402,8 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
     const disableAddition = this.state.count >= maxAllowed;
     const levelData = this.getSelectedLevelData();
     const maxLevel = Math.max(...Object.keys(levelData).map(Number));
-    const currentLevelRequiredExp = levelData[this.getNumericInitialLevel()]
-      ? levelData[this.getNumericInitialLevel()].requiredExp
+    const currentLevelRequiredExp = levelData[this.getNumericStartLevel()]
+      ? levelData[this.getNumericStartLevel()].requiredExp
       : '';
     // Calculate progress for current level's EXP bar
     const currentLevel = outcome.finalLevel;
@@ -450,14 +450,14 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
           </div>
           <div className="setting-section">
             <label>
-              Initial Level:
+              Start Level:
               {/* Immediate update on change (onBlur removed) */}
               <input
                 type="number"
-                value={this.state.initialLevel}
+                value={this.state.startLevel}
                 min="1"
                 max={maxLevel}
-                onChange={this.handleInitialLevelChange}
+                onChange={this.handleStartLevelChange}
                 onFocus={(e) => e.target.select()}
               />
             </label>
@@ -506,7 +506,7 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
               <input
                 type="number"
                 value={this.state.targetLevel}
-                min={Number(this.state.initialLevel) + 1}
+                min={Number(this.state.startLevel) + 1}
                 max={maxLevel + 1}
                 onChange={this.handleTargetLevelChange}
                 onBlur={this.handleTargetLevelBlur}
@@ -518,7 +518,7 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
         </div>
         <div className="result-section">
           <h2>
-            Lv. {this.state.initialLevel} → Lv. {outcome.finalLevel}
+            Lv. {this.state.startLevel} → Lv. {outcome.finalLevel}
           </h2>
           <div className="progress-bar">
             <div className="progress-fill" style={{ width: `${progressPercentage}%` }} />
