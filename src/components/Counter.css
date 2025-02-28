@@ -1,0 +1,62 @@
+/* Counter.css */
+.counter-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.setting-group {
+  margin-bottom: 20px;
+}
+
+.setting-section {
+  margin-bottom: 10px;
+}
+
+.setting-label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.setting-section label {
+  margin-right: 15px;
+}
+
+.result-section {
+  text-align: center;
+}
+
+.progress-bar {
+  width: 300px;
+  height: 20px;
+  background-color: #eee;
+  border-radius: 5px;
+  margin: 10px auto;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #4caf50;
+  transition: width 0.1s ease;
+}
+
+.button-group {
+  margin: 10px 0;
+}
+
+.button-group button {
+  margin: 0 5px;
+  padding: 8px 12px;
+  font-size: 16px;
+}
+
+.reset-group {
+  margin-top: 10px;
+}
+
+.reset-group button {
+  margin: 0 5px;
+  padding: 6px 10px;
+  font-size: 14px;
+}

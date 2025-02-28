@@ -1,0 +1,297 @@
+[
+    {
+        "currentLevel": "1",
+        "requiedExp": "54",
+        "costDreamShards": "14"
+    },
+    {
+        "currentLevel": "2",
+        "requiedExp": "71",
+        "costDreamShards": "18"
+    },
+    {
+        "currentLevel": "3",
+        "requiedExp": "108",
+        "costDreamShards": "22"
+    },
+    {
+        "currentLevel": "4",
+        "requiedExp": "128",
+        "costDreamShards": "27"
+    },
+    {
+        "currentLevel": "5",
+        "requiedExp": "164",
+        "costDreamShards": "30"
+    },
+    {
+        "currentLevel": "6",
+        "requiedExp": "202",
+        "costDreamShards": "34"
+    },
+    {
+        "currentLevel": "7",
+        "requiedExp": "244",
+        "costDreamShards": "39"
+    },
+    {
+        "currentLevel": "8",
+        "requiedExp": "274",
+        "costDreamShards": "44"
+    },
+    {
+        "currentLevel": "9",
+        "requiedExp": "315",
+        "costDreamShards": "48"
+    },
+    {
+        "currentLevel": "10",
+        "requiedExp": "345",
+        "costDreamShards": "50"
+    },
+    {
+        "currentLevel": "11",
+        "requiedExp": "376",
+        "costDreamShards": "52"
+    },
+    {
+        "currentLevel": "12",
+        "requiedExp": "407",
+        "costDreamShards": "53"
+    },
+    {
+        "currentLevel": "13",
+        "requiedExp": "419",
+        "costDreamShards": "56"
+    },
+    {
+        "currentLevel": "14",
+        "requiedExp": "429",
+        "costDreamShards": "59"
+    },
+    {
+        "currentLevel": "15",
+        "requiedExp": "440",
+        "costDreamShards": "62"
+    },
+    {
+        "currentLevel": "16",
+        "requiedExp": "454",
+        "costDreamShards": "66"
+    },
+    {
+        "currentLevel": "17",
+        "requiedExp": "469",
+        "costDreamShards": "68"
+    },
+    {
+        "currentLevel": "18",
+        "requiedExp": "483",
+        "costDreamShards": "71"
+    },
+    {
+        "currentLevel": "19",
+        "requiedExp": "497",
+        "costDreamShards": "74"
+    },
+    {
+        "currentLevel": "20",
+        "requiedExp": "515",
+        "costDreamShards": "78"
+    },
+    {
+        "currentLevel": "21",
+        "requiedExp": "537",
+        "costDreamShards": "81"
+    },
+    {
+        "currentLevel": "22",
+        "requiedExp": "558",
+        "costDreamShards": "85"
+    },
+    {
+        "currentLevel": "23",
+        "requiedExp": "579",
+        "costDreamShards": "88"
+    },
+    {
+        "currentLevel": "24",
+        "requiedExp": "600",
+        "costDreamShards": "92"
+    },
+    {
+        "currentLevel": "25",
+        "requiedExp": "622",
+        "costDreamShards": "95"
+    },
+    {
+        "currentLevel": "26",
+        "requiedExp": "643",
+        "costDreamShards": "100"
+    },
+    {
+        "currentLevel": "27",
+        "requiedExp": "665",
+        "costDreamShards": "105"
+    },
+    {
+        "currentLevel": "28",
+        "requiedExp": "686",
+        "costDreamShards": "111"
+    },
+    {
+        "currentLevel": "29",
+        "requiedExp": "708",
+        "costDreamShards": "117"
+    },
+    {
+        "currentLevel": "30",
+        "requiedExp": "729",
+        "costDreamShards": "122"
+    },
+    {
+        "currentLevel": "31",
+        "requiedExp": "748",
+        "costDreamShards": "126"
+    },
+    {
+        "currentLevel": "32",
+        "requiedExp": "766",
+        "costDreamShards": "130"
+    },
+    {
+        "currentLevel": "33",
+        "requiedExp": "785",
+        "costDreamShards": "136"
+    },
+    {
+        "currentLevel": "34",
+        "requiedExp": "803",
+        "costDreamShards": "143"
+    },
+    {
+        "currentLevel": "35",
+        "requiedExp": "821",
+        "costDreamShards": "151"
+    },
+    {
+        "currentLevel": "36",
+        "requiedExp": "839",
+        "costDreamShards": "160"
+    },
+    {
+        "currentLevel": "37",
+        "requiedExp": "857",
+        "costDreamShards": "167"
+    },
+    {
+        "currentLevel": "38",
+        "requiedExp": "875",
+        "costDreamShards": "174"
+    },
+    {
+        "currentLevel": "39",
+        "requiedExp": "893",
+        "costDreamShards": "184"
+    },
+    {
+        "currentLevel": "40",
+        "requiedExp": "910",
+        "costDreamShards": "192"
+    },
+    {
+        "currentLevel": "41",
+        "requiedExp": "928",
+        "costDreamShards": "201"
+    },
+    {
+        "currentLevel": "42",
+        "requiedExp": "945",
+        "costDreamShards": "211"
+    },
+    {
+        "currentLevel": "43",
+        "requiedExp": "963",
+        "costDreamShards": "221"
+    },
+    {
+        "currentLevel": "44",
+        "requiedExp": "980",
+        "costDreamShards": "227"
+    },
+    {
+        "currentLevel": "45",
+        "requiedExp": "997",
+        "costDreamShards": "236"
+    },
+    {
+        "currentLevel": "46",
+        "requiedExp": "1,015",
+        "costDreamShards": "250"
+    },
+    {
+        "currentLevel": "47",
+        "requiedExp": "1,032",
+        "costDreamShards": "264"
+    },
+    {
+        "currentLevel": "48",
+        "requiedExp": "1,049",
+        "costDreamShards": "279"
+    },
+    {
+        "currentLevel": "49",
+        "requiedExp": "1,066",
+        "costDreamShards": "295"
+    },
+    {
+        "currentLevel": "50",
+        "requiedExp": "1,362",
+        "costDreamShards": "309"
+    },
+    {
+        "currentLevel": "51",
+        "requiedExp": "1,562",
+        "costDreamShards": "323"
+    },
+    {
+        "currentLevel": "52",
+        "requiedExp": "1,747",
+        "costDreamShards": "338"
+    },
+    {
+        "currentLevel": "53",
+        "requiedExp": "1,946",
+        "costDreamShards": "356"
+    },
+    {
+        "currentLevel": "54",
+        "requiedExp": "2,195",
+        "costDreamShards": "372"
+    },
+    {
+        "currentLevel": "55",
+        "requiedExp": "2,279",
+        "costDreamShards": "391"
+    },
+    {
+        "currentLevel": "56",
+        "requiedExp": "2,404",
+        "costDreamShards": "437"
+    },
+    {
+        "currentLevel": "57",
+        "requiedExp": "2,533",
+        "costDreamShards": "486"
+    },
+    {
+        "currentLevel": "58",
+        "requiedExp": "2,666",
+        "costDreamShards": "538"
+    },
+    {
+        "currentLevel": "59",
+        "requiedExp": "2,806",
+        "costDreamShards": "593"
+    }
+]
