@@ -368,9 +368,10 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
   // Continuous action for button press
   startContinuousAction = (action: ButtonAction, value: number): void => {
     this.stopContinuousAction();
+    // Immediate action on press
     action(value);
+    // Start continuous action after 500ms if still pressed
     this.delayTimer = window.setTimeout(() => {
-      if (!this.delayTimer) return;
       this.timer = window.setInterval(() => action(value), 100);
     }, 500);
   };
@@ -386,31 +387,26 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
     }
   };
 
-  // Returns button event handlers for continuous actions
+  // Returns button event handlers for continuous actions using pointer events
   getButtonHandlers = (action: ButtonAction, value: number): React.HTMLAttributes<HTMLButtonElement> => ({
-    // Prevent default to avoid text selection and duplicate events on touch devices
-    onMouseDown: (e) => {
+    onPointerDown: (e) => {
       e.preventDefault();
       this.startContinuousAction(action, value);
     },
-    onMouseUp: (e) => {
+    onPointerUp: (e) => {
       e.preventDefault();
       this.stopContinuousAction();
     },
-    onMouseLeave: (e) => {
+    onPointerCancel: (e) => {
       e.preventDefault();
       this.stopContinuousAction();
     },
-    onTouchStart: (e) => {
-      e.preventDefault();
-      this.startContinuousAction(action, value);
-    },
-    onTouchEnd: (e) => {
+    onPointerLeave: (e) => {
       e.preventDefault();
       this.stopContinuousAction();
     },
-    // Prevent click events that might fire after touch events
     onClick: (e) => {
+      // Prevent synthetic click events that might fire after pointer events
       e.preventDefault();
     }
   });
