@@ -3,6 +3,7 @@ import './Counter.css';
 import levelData600Json from '../assets/expTable_600.json';
 import levelData900Json from '../assets/expTable_900.json';
 import levelData1080Json from '../assets/expTable_1080.json';
+import levelData1320Json from '../assets/expTable_1320.json';
 
 // Define the type for each row in the JSON files
 interface LevelDataRow {
@@ -20,7 +21,7 @@ interface LevelDataItem {
 // Define the structure of our component state
 interface LevelUpCounterState {
   count: number;
-  selectedExpTable: '600' | '900' | '1080';
+  selectedExpTable: '600' | '900' | '1080' | '1320';
   selectedItemExpOption: 'None' | 'Boost' | 'Reduction';
   // Numeric inputs are stored as strings for editing purposes
   startLevel: string;
@@ -37,6 +38,7 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
   private levelData600: Record<number, LevelDataItem>;
   private levelData900: Record<number, LevelDataItem>;
   private levelData1080: Record<number, LevelDataItem>;
+  private levelData1320: Record<number, LevelDataItem>;
 
   // Timers for continuous button actions (using number type in browsers)
   private timer: number | null = null;
@@ -73,6 +75,15 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
       return acc;
     }, {} as Record<number, LevelDataItem>);
 
+    this.levelData1320 = (levelData1320Json as LevelDataRow[]).reduce((acc, item) => {
+      const level = Number(item.currentLevel);
+      acc[level] = {
+        requiredExp: Number(item.requiedExp.replace(/,/g, '')),
+        cost: Number(item.costDreamShards.replace(/,/g, ''))
+      };
+      return acc;
+    }, {} as Record<number, LevelDataItem>);
+
     // Default settings
     const defaultExpTable: '600' = '600';
     const defaultLevelData = this.levelData600;
@@ -81,8 +92,8 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
 
     this.state = {
       count: 0,
-      selectedExpTable: defaultExpTable, // '600', '900', or '1080'
-      selectedItemExpOption: 'None',      // 'None', 'Boost', or 'Reduction'
+      selectedExpTable: defaultExpTable, // '600', '900', '1080', or '1320'
+      selectedItemExpOption: 'None',     // 'None', 'Boost', or 'Reduction'
       startLevel: defaultStartLevel,
       initialRemainingExp: defaultInitialRemainingExp,
       expBoostRate: "1",        // EXP Boost Rate (multiplier)
@@ -105,6 +116,7 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
       case '600': return this.levelData600;
       case '900': return this.levelData900;
       case '1080': return this.levelData1080;
+      case '1320': return this.levelData1320;
       default: return this.levelData600;
     }
   };
@@ -124,12 +136,14 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
 
   // Handler: EXP table change
   handleExpTableChange = (e: ChangeEvent<HTMLInputElement>): void => {
-    const newTable = e.target.value as '600' | '900' | '1080';
+    const newTable = e.target.value as '600' | '900' | '1080' | '1320';
     const levelData = newTable === '600'
       ? this.levelData600
       : newTable === '900'
       ? this.levelData900
-      : this.levelData1080;
+      : newTable === '1080'
+      ? this.levelData1080
+      : this.levelData1320;
     // When EXP table changes, update initialRemainingExp based on current startLevel
     const numericLevel = this.getNumericStartLevel();
     const newInitialRemainingExp = levelData[numericLevel]
@@ -446,6 +460,10 @@ class LevelUpCounter extends Component<{}, LevelUpCounterState> {
             <label>
               <input type="radio" name="expTable" value="1080" checked={this.state.selectedExpTable === '1080'} onChange={this.handleExpTableChange} />
               Legendary (x1.8)
+            </label>
+            <label>
+              <input type="radio" name="expTable" value="1320" checked={this.state.selectedExpTable === '1320'} onChange={this.handleExpTableChange} />
+              Mythical (x2.2)
             </label>
           </div>
           <div className="setting-section">
