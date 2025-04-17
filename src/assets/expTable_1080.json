@@ -293,5 +293,30 @@
         "currentLevel": "59",
         "requiedExp": "5051",
         "costDreamShards": "593"
+    },
+    {
+        "currentLevel": "60",
+        "requiedExp": "5157",
+        "costDreamShards": "651"
+    },
+    {
+        "currentLevel": "61",
+        "requiedExp": "5259",
+        "costDreamShards": "698"
+    },
+    {
+        "currentLevel": "62",
+        "requiedExp": "5358",
+        "costDreamShards": "750"
+    },
+    {
+        "currentLevel": "63",
+        "requiedExp": "5452",
+        "costDreamShards": "804"
+    },
+    {
+        "currentLevel": "64",
+        "requiedExp": "5539",
+        "costDreamShards": "866"
     }
 ]
