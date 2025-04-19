@@ -5,14 +5,14 @@ import levelData900Json from '../assets/expTable_900.json';
 import levelData1080Json from '../assets/expTable_1080.json';
 import levelData1320Json from '../assets/expTable_1320.json';
 
-type LevelDataRow = { currentLevel: string; requiedExp: string; costDreamShards: string };
+type LevelDataRow = { currentLevel: string; requiredExp: string; costDreamShards: string };
 type LevelDataItem = { requiredExp: number; cost: number };
 
 const parseLevelData = (rows: LevelDataRow[]): Record<number, LevelDataItem> =>
-  rows.reduce((acc, { currentLevel, requiedExp, costDreamShards }) => {
+  rows.reduce((acc, { currentLevel, requiredExp, costDreamShards }) => {
     const lvl = Number(currentLevel);
     acc[lvl] = {
-      requiredExp: Number(requiedExp.replace(/,/g, '')),
+      requiredExp: Number(requiredExp.replace(/,/g, '')),
       cost: Number(costDreamShards.replace(/,/g, '')),
     };
     return acc;
